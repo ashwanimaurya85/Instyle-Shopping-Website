@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400&family=Roboto:wght@400;700&display=swap');
+
+:root{
+    --black-color: #050206;
+    --semi-black: #3B3B3B;
+    --beige-color: #9A8174;
+    --white-color: #FFFFFF;
+--red:red;
+    --primary-font-family: 'Roboto', sans-serif;
+    --secondary-font-family: 'Red Rose', cursive;
+
+    --light-font-weight: 300;
+    --normal-font-weight: 400;
+    --bold-font-weight: 700;
+}
+

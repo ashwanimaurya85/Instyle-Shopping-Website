@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-signin-client_id"
+      content="359025133879-2fomd2p99btt2hampee7bi3k25mcenkq.apps.googleusercontent.com"
+    />
+
+    <title>InStyle e-Commerce App</title>
+    <link rel="shortcut icon" href="https://i.pinimg.com/736x/19/13/3b/19133b0f82fc8fd6dbb8179d8e2e7187--high-definition-download.jpg" type="image/x-icon">
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <!-- fontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/javascript.util/0.12.12/javascript.util.min.js"
+      integrity="sha512-oHBLR38hkpOtf4dW75gdfO7VhEKg2fsitvHZYHZjObc4BPKou2PGenyxA5ZJ8CCqWytBx5wpiSqwVEBy84b7tw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body>
+    <input type="checkbox" id="themeToggle" />
+    <label for="themeToggle" class="theme-switch"></label>
+    
+<div class="cursor" id="cursor"></div>
+<div class="cursor-pointer" id="cursor-pointer"></div>
+
+    
+    <nav class="navbar navbar-expand-lg bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#"
+          ><i class="fa-brands fa-cotton-bureau"></i
+          ><span class="ms-2">InStyle</span></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"
+            ><i class="fa-solid fa-bars" style="color: white"></i
+          ></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+          <ul class="nav navbar-nav navbar-right mb-2 mb-lg-0">
+            <li class="greetings"></li>
+            <li class="nav-item ms-3">
+              <a class="nav-link d-flex align-items-center active" href="#"
+                ><i class="fa-solid fa-house"></i
+                ><span class="ms-1">Home</span></a
+              >
+            </li>
+            <li class="nav-item ms-3">
+              <a class="nav-link d-flex align-items-center" href="#"
+                ><i class="fa-solid fa-shop"></i
+                ><span class="ms-1">Shop</span></a
+              >
+            </li>
+            <li class="nav-item ms-3">
+              <a class="nav-link d-flex align-items-center" href="#"
+                ><i class="fa-solid fa-cart-shopping"></i
+                ><span class="ms-1">Cart</span></a
+              >
+            </li>
+            <li class="nav-item ms-3 profile">
+              <a
+                class="loginProfileBtn nav-link d-flex align-items-center"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                href="#"
+                ><i class="fa-solid fa-power-off"></i
+                ><span class="ms-1">Login</span></a
+              >
+              <a
+                class="logoutBtn nav-link d-flex align-items-center profile-hide"
+                href="#"
+                ><i class="fa-solid fa-power-off"></i
+                ><span class="ms-1">Logout</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <!-- modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Login Here</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active login" aria-current="page" href="#"
+                    >Login</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link signup" href="#">Signup</a>
+                </li>
+              </ul>
+              <div class="loginOrSignUp">
+                <input type="email" placeholder="email" class="email" />
+                <input
+                  type="password"
+                  placeholder="password"
+                  class="password"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary reset">
+                Reset
+              </button>
+              <button type="button" class="btn btn-primary loginBtn">
+                Login
+              </button>
+              <button type="button" class="btn btn-primary signupBtn hide">
+                Signup
+              </button>
+            </div>
+            <button id="google-signin-button">
+              <img
+                src="https://img.icons8.com/fluency/30/google-logo.png"
+                alt="google-logo"
+              />
+              <span>Sign In with Google</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="canvas">
+        <div class="home canvas-item">
+          <div class="carousel-box">
+            <div
+              id="carouselExampleIndicators"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="./images/poster1.png"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="./images/poster2.png"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="./images/poster3.png"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="./images/poster4.png"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="./images/poster5.png"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="./images/poster6.png"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev"
+              >
+                <span aria-hidden="true"
+                  ><i
+                    class="fa-solid fa-2x fa-chevron-left"
+                    style="color: #050206"
+                  ></i
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next"
+              >
+                <span aria-hidden="true"
+                  ><i
+                    class="fa-solid fa-2x fa-chevron-right"
+                    style="color: #050206"
+                  ></i
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+          <div class="categories-box">
+            <h1 class="my-3">SHOP BY CATEGORY</h1>
+            <div class="categories">
+              <div class="category"><img src="./images/men.png" /></div>
+              <div class="fake-images"><img src="./images/hangers.png" /></div>
+              <div class="fake-images"><img src="./images/shopping.jpg" /></div>
+              <div class="category"><img src="./images/women.png" /></div>
+              <div class="category"><img src="./images/accessories.png" /></div>
+              <div class="fake-images"><img src="./images/handbag.png" /></div>
+              <div class="fake-images"><img src="./images/gadgets.png" /></div>
+              <div class="category"><img src="./images/electronics.png" /></div>
+            </div>
+          </div>
+          <div class="footer1">
+            <div class="socialMedia">
+              <p>show us some love ❤ on social media</p>
+              <ul class="socialMedia_ul">
+                <li><i class="fa-brands fa-instagram"></i></li>
+                <li><i class="fa-brands fa-facebook"></i></li>
+                <li><i class="fa-brands fa-youtube"></i></li>
+                <li><i class="fa-brands fa-twitter"></i></li>
+                <li><i class="fa-brands fa-pinterest"></i></li>
+              </ul>
+            </div>
+            <div class="appStores">
+              <p>EXPERIENCE THE INSTYLE MOBILE APP</p>
+              <div class="app_images">
+                <a
+                  ><img
+                    src="./images/googlePlayBtn.jpeg"
+                    alt="googlePlayButton"
+                /></a>
+                <a
+                  ><img
+                    src="./images/appleStoreBtn.jpeg"
+                    alt="appleStoreButton"
+                /></a>
+              </div>
+            </div>
+            <div class="contact">
+              <p>FOR ANY HELP CALL US AT 1800-267-4444</p>
+              <p>(Monday to Saturday, 8AM to 10PM)</p>
+            </div>
+          </div>
+          <div class="footer2">
+            <div class="policy">
+              <ul>
+                <li>Terms & Conditions</li>
+                <li>Shipping Policy</li>
+                <li>Cancellation Policy</li>
+                <li>Privacy Policy</li>
+              </ul>
+            </div>
+            <div class="copyrights">
+              © 2023 InStyle E-Retail Pvt. Ltd. All Rights Reserved
+            </div>
+          </div>
+        </div>
+        <div class="shop canvas-item hide">
+          <div class="filters">
+            <div class="filter-categories">
+              <section>
+                <h3>Categories</h3>
+                <ul>
+                  <li>
+                    <input
+                      id="men1"
+                      type="checkbox"
+                      name="category"
+                      class="filters1"
+                    />
+                    <label for="men1">Men's Clothing</label>
+                  </li>
+                  <li>
+                    <input
+                      id="women1"
+                      type="checkbox"
+                      name="category"
+                      class="filters1"
+                    />
+                    <label for="women1">Women's Clothing</label>
+                  </li>
+                  <li>
+                    <input
+                      id="jewellery1"
+                      type="checkbox"
+                      name="category"
+                      class="filters1"
+                    />
+                    <label for="jewellery1">Jewellery</label>
+                  </li>
+                  <li>
+                    <input
+                      id="electronics"
+                      type="checkbox"
+                      name="category"
+                      class="filters1"
+                    />
+                    <label for="electronics">Electronics</label>
+                  </li>
+                </ul>
+              </section>
+              <section>
+                <h3>Rating</h3>
+                <input
+                  type="range"
+                  id="range1"
+                  min="0"
+                  max="5"
+                  value="0"
+                  list="values"
+                  class="filters1"
+                />
+                <datalist id="values1">
+                  <option value="0" label="0"></option>
+                  <option value="1"></option>
+                  <option value="2"></option>
+                  <option value="3"></option>
+                  <option value="4"></option>
+                  <option value="5" label="5"></option>
+                </datalist>
+              </section>
+              <section>
+                <h3>Price Range</h3>
+                <ul>
+                  <li>
+                    <input
+                      id="0-25_1"
+                      type="checkbox"
+                      name="prange"
+                      class="filters1"
+                    />
+                    <label for="0-25_1">$0 to $25</label>
+                  </li>
+                  <li>
+                    <input
+                      id="25-50_1"
+                      type="checkbox"
+                      name="prange"
+                      class="filters1"
+                    />
+                    <label for="25-50_1">$25 to $50</label>
+                  </li>
+                  <li>
+                    <input
+                      id="50-100_1"
+                      type="checkbox"
+                      name="prange"
+                      class="filters1"
+                    />
+                    <label for="50-100_1">$50 to $100</label>
+                  </li>
+                  <li>
+                    <input
+                      id="100on_1"
+                      type="checkbox"
+                      name="prange"
+                      class="filters1"
+                    />
+                    <label for="100on_1">$100 onwards</label>
+                  </li>
+                </ul>
+              </section>
+              <section class="buttons_section">
+                <button type="button" class="btn btn-secondary resetFilters">
+                  Reset
+                </button>
+              </section>
+            </div>
+            <h3
+              style="
+                text-align: center;
+                margin: 0px 10px;
+                font-family: var(--secondary-font-family);
+                color: var(--beige-color);
+              "
+            >
+              Keep Calm & Shop Online
+            </h3>
+          </div>
+          <div class="products_catalog_box">
+            <div class="searchBox">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                id="searchBar"
+                type="text"
+                placeholder="Search For Products"
+              />
+            </div>
+            <div class="products_catalog"></div>
+          </div>
+
+          <button
+            class="filter-button btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal1"
+            href="#"
+          >
+            <i class="fa-solid fa-2x fa-filter"></i><span class="ms-1"></span>
+          </button>
+
+          <!-- modal -->
+          <div
+            class="modal fade"
+            id="exampleModal1"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Filters</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="filter-categories">
+                    <section>
+                      <h3>Categories</h3>
+                      <ul>
+                        <li>
+                          <input
+                            id="men2"
+                            type="checkbox"
+                            name="category"
+                            class="filters2"
+                          />
+                          <label for="men2">Men's Clothing</label>
+                        </li>
+                        <li>
+                          <input
+                            id="women2"
+                            type="checkbox"
+                            name="category"
+                            class="filters2"
+                          />
+                          <label for="women2">Women's Clothing</label>
+                        </li>
+                        <li>
+                          <input
+                            id="jewellery2"
+                            type="checkbox"
+                            name="category"
+                            class="filters2"
+                          />
+                          <label for="jewellery2">Jewellery</label>
+                        </li>
+                        <li>
+                          <input
+                            id="electronics2"
+                            type="checkbox"
+                            name="category"
+                            class="filters2"
+                          />
+                          <label for="electronics2">Electronics</label>
+                        </li>
+                      </ul>
+                    </section>
+                    <section>
+                      <h3>Rating</h3>
+                      <input
+                        type="range"
+                        id="range2"
+                        min="0"
+                        max="5"
+                        value="0"
+                        list="values"
+                        class="filters2"
+                      />
+                      <datalist id="values2">
+                        <option value="0" label="0"></option>
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5" label="5"></option>
+                      </datalist>
+                    </section>
+                    <section>
+                      <h3>Price Range</h3>
+                      <ul>
+                        <li>
+                          <input
+                            id="0-25_2"
+                            type="checkbox"
+                            name="prange"
+                            class="filters2"
+                          />
+                          <label for="0-25_2">$0 to $25</label>
+                        </li>
+                        <li>
+                          <input
+                            id="25-50_2"
+                            type="checkbox"
+                            name="prange"
+                            class="filters2"
+                          />
+                          <label for="25-50_2">$25 to $50</label>
+                        </li>
+                        <li>
+                          <input
+                            id="50-100_2"
+                            type="checkbox"
+                            name="prange"
+                            class="filters2"
+                          />
+                          <label for="50-100_2">$50 to $100</label>
+                        </li>
+                        <li>
+                          <input
+                            id="100on_2"
+                            type="checkbox"
+                            name="prange"
+                            class="filters2"
+                          />
+                          <label for="100on_2">$100 onwards</label>
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary resetFilters">
+                    Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cart canvas-item hide">
+          <h1
+            style="margin-top: 10px; font-family: var(--secondary-font-family)"
+          >
+            My Style Cart
+          </h1>
+          <div class="cart_catalog"></div>
+          <div class="price_list" style="font-family: var(--secondary-font-family);">
+            <h1 style="text-align: center; font-family: var(--secondary-font-family);">Price Details</h1>
+            <div class="priceDetails">
+              <div class="priceRow">
+                <span>Total MRP <span id="totalQty"></span></span
+                ><span id="totalPrice"></span>
+              </div>
+              <div class="priceRow">
+                <span>Discount </span><span id="discount"></span>
+              </div>
+              <div class="priceRow">
+                <span>Shipping </span><span id="shipping"></span>
+              </div>
+              <div class="priceRow">
+                  <span>Grand Total:</span> <strong><span id="grandTotal"></span></strong>
+              </div>
+              <button id="payBtn">Proceed to Pay</button>
+            </div>
+            <img id="cart_shopping_img" src="./images/shoppingGirl.png" alt="shopping_image"/>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script type="module" src="./js/firebase.js"></script>
+    <!-- Google Sign-In API -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/shop.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="./js/razorpay.js"></script>
+  </body>
+</html>
